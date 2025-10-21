@@ -6,19 +6,16 @@ import ProductCard from "@/components/ProductCard";
 const Index = () => {
   const products = [
     {
-      name: "INDICA BLEND",
-      price: "45.00",
-      image: "https://images.unsplash.com/photo-1605647540924-852290f6b0d5?w=800&q=80"
+      name: "PRE-ROLL",
+      price: "15.00"
     },
     {
-      name: "SATIVA BLEND",
-      price: "45.00", 
-      image: "https://images.unsplash.com/photo-1612159498633-e876c81c08c0?w=800&q=80"
+      name: "VAPE",
+      price: "45.00"
     },
     {
-      name: "HYBRID BLEND",
-      price: "50.00",
-      image: "https://images.unsplash.com/photo-1610920190674-d3bb0a6d9aaf?w=800&q=80"
+      name: "FLOWER",
+      price: "50.00"
     }
   ];
 
@@ -47,11 +44,7 @@ const Index = () => {
             <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-center">
               "MOST<br />WANTED"
             </h1>
-            <div className="flex gap-4 items-center">
-              <div className="w-4 h-4 bg-red" />
-              <div className="w-4 h-4 bg-background border-2 border-blue" />
-              <div className="w-4 h-4 bg-green" />
-            </div>
+            <div className="w-full h-px bg-red max-w-xs mx-auto" />
             <p className="text-sm tracking-[0.5em] text-center">PREMIUM THCA HEMP</p>
           </div>
         </div>
