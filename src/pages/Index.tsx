@@ -42,14 +42,14 @@ const Index = () => {
               alt="Most Wanted Star Logo" 
               className="w-32 h-32 md:w-40 md:h-40 object-contain"
             />
+            <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-center">
+              "MOST WANTED"
+            </h1>
             <img 
               src={rioGrandeFlag} 
               alt="Republic of Rio Grande Flag" 
-              className="w-40 h-24 md:w-56 md:h-32 object-cover border border-foreground"
+              className="w-48 h-28 md:w-64 md:h-40 object-cover object-left border border-foreground"
             />
-            <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-center">
-              "MOST<br />WANTED"
-            </h1>
             <div className="w-full h-px bg-red max-w-xs mx-auto" />
             <p className="text-sm tracking-[0.5em] text-center">PREMIUM THCA HEMP</p>
             <p className="text-xs tracking-[0.3em] text-center text-muted-foreground">SOUTH TEXAS</p>
