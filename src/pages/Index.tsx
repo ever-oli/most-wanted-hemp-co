@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import logoStar from "@/assets/logo-star.jpg";
 import logoMoney from "@/assets/logo-money.png";
+import logoMW from "@/assets/logo-mw.png";
 import rioGrandeFlag from "@/assets/rio-grande-flag.png";
 import ProductCard from "@/components/ProductCard";
 
@@ -44,9 +45,9 @@ const Index = () => {
                 className="w-20 h-20 md:w-28 md:h-28 object-contain rotate-45"
               />
               <img 
-                src={logoStar} 
-                alt="Most Wanted Star Logo" 
-                className="w-20 h-20 md:w-28 md:h-28 object-contain rotate-45"
+                src={logoMW} 
+                alt="Most Wanted MW Logo" 
+                className="w-20 h-20 md:w-28 md:h-28 object-contain"
               />
               <img 
                 src={logoStar} 
