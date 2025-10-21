@@ -40,7 +40,7 @@ const Index = () => {
             <img 
               src={logoStar} 
               alt="Most Wanted Star Logo" 
-              className="w-32 h-32 md:w-40 md:h-40 object-contain"
+              className="w-32 h-32 md:w-40 md:h-40 object-contain rotate-45"
             />
             <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-center">
               "MOST WANTED"
