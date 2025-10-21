@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import logoStar from "@/assets/logo-star.jpg";
 import logoMoney from "@/assets/logo-money.png";
+import rioGrandeFlag from "@/assets/rio-grande-flag.png";
 import ProductCard from "@/components/ProductCard";
 
 const Index = () => {
@@ -36,16 +37,24 @@ const Index = () => {
       <section className="pt-24 pb-16 container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center justify-center min-h-[70vh] space-y-12">
-            <img 
-              src={logoStar} 
-              alt="Most Wanted Star Logo" 
-              className="w-48 h-48 md:w-64 md:h-64 object-contain"
-            />
+            <div className="flex items-center gap-8 md:gap-12">
+              <img 
+                src={logoStar} 
+                alt="Most Wanted Star Logo" 
+                className="w-32 h-32 md:w-48 md:h-48 object-contain"
+              />
+              <img 
+                src={rioGrandeFlag} 
+                alt="Republic of Rio Grande Flag" 
+                className="w-32 h-24 md:w-48 md:h-36 object-contain border border-foreground"
+              />
+            </div>
             <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-center">
               "MOST<br />WANTED"
             </h1>
             <div className="w-full h-px bg-red max-w-xs mx-auto" />
             <p className="text-sm tracking-[0.5em] text-center">PREMIUM THCA HEMP</p>
+            <p className="text-xs tracking-[0.3em] text-center text-muted-foreground">SOUTH TEXAS</p>
           </div>
         </div>
       </section>
