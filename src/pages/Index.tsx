@@ -37,11 +37,23 @@ const Index = () => {
       <section className="pt-24 pb-16 container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center justify-center min-h-[70vh] space-y-8">
-            <img 
-              src={logoStar} 
-              alt="Most Wanted Star Logo" 
-              className="w-32 h-32 md:w-40 md:h-40 object-contain rotate-45"
-            />
+            <div className="flex flex-col gap-4">
+              <img 
+                src={logoStar} 
+                alt="Most Wanted Star Logo" 
+                className="w-24 h-24 md:w-32 md:h-32 object-contain rotate-45"
+              />
+              <img 
+                src={logoStar} 
+                alt="Most Wanted Star Logo" 
+                className="w-24 h-24 md:w-32 md:h-32 object-contain rotate-45"
+              />
+              <img 
+                src={logoStar} 
+                alt="Most Wanted Star Logo" 
+                className="w-24 h-24 md:w-32 md:h-32 object-contain rotate-45"
+              />
+            </div>
             <h1 className="text-5xl md:text-8xl font-black tracking-tighter text-center">
               "MOST WANTED"
             </h1>
