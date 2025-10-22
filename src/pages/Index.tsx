@@ -4,7 +4,14 @@ import logoMoney from "@/assets/logo-money.png";
 import logoMW from "@/assets/logo-mw.png";
 import rioGrandeFlag from "@/assets/rio-grande-flag.png";
 import ProductCard from "@/components/ProductCard";
+import { CartDrawer } from "@/components/CartDrawer";
+import { useCart } from "@/contexts/CartContext";
+import { ShoppingCart } from "lucide-react";
+import { useState } from "react";
 const Index = () => {
+  const { itemCount } = useCart();
+  const [cartOpen, setCartOpen] = useState(false);
+  
   const products = [{
     name: "PRE-ROLL",
     price: "15.00"
@@ -20,12 +27,28 @@ const Index = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-foreground">
         <nav className="container mx-auto px-6 py-6 flex justify-between items-center">
           <div className="text-lg md:text-xl font-black tracking-tighter">MW</div>
-          <div className="flex gap-6 md:gap-12 text-xs font-bold tracking-widest">
-            <a href="#shop" className="hover:opacity-50 transition-opacity">SHOP</a>
-            <a href="#about" className="hover:opacity-50 transition-opacity">ABOUT</a>
+          <div className="flex items-center gap-6 md:gap-12">
+            <div className="flex gap-6 md:gap-12 text-xs font-bold tracking-widest">
+              <a href="#shop" className="hover:opacity-50 transition-opacity">SHOP</a>
+              <a href="#about" className="hover:opacity-50 transition-opacity">ABOUT</a>
+            </div>
+            <button
+              onClick={() => setCartOpen(true)}
+              className="relative hover:opacity-50 transition-opacity"
+              aria-label="Open cart"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              {itemCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-foreground text-background text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {itemCount}
+                </span>
+              )}
+            </button>
           </div>
         </nav>
       </header>
+
+      <CartDrawer open={cartOpen} onOpenChange={setCartOpen} />
 
       {/* Hero */}
       <section className="pt-24 pb-16 container mx-auto px-6">

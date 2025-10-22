@@ -1,4 +1,5 @@
 import React from "react";
+import { useCart } from "@/contexts/CartContext";
 
 interface ProductCardProps {
   name: string;
@@ -7,6 +8,7 @@ interface ProductCardProps {
 
 const ProductCard = ({ name, price }: ProductCardProps) => {
   const [selectedStrain, setSelectedStrain] = React.useState<"SATIVA" | "INDICA" | "HYBRID">("SATIVA");
+  const { addToCart } = useCart();
   
   return (
     <article className="group cursor-pointer border border-foreground p-8 hover:bg-foreground hover:text-background transition-colors">
@@ -48,6 +50,20 @@ const ProductCard = ({ name, price }: ProductCardProps) => {
             HYBRID
           </button>
         </div>
+        
+        <button
+          onClick={() => {
+            addToCart({
+              id: `${name.toLowerCase()}-${selectedStrain.toLowerCase()}`,
+              name,
+              price,
+              strain: selectedStrain,
+            });
+          }}
+          className="w-full text-xs uppercase tracking-wider py-3 border border-foreground bg-foreground text-background hover:bg-background hover:text-foreground transition-colors font-bold mt-4"
+        >
+          ADD TO CART
+        </button>
       </div>
     </article>
   );
