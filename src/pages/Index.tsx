@@ -91,7 +91,7 @@ const Index = () => {
       <section className="py-16 md:py-24 bg-foreground text-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-6xl mx-auto flex flex-col items-center space-y-6 md:space-y-8">
-            <img src={logoMoney} alt="Money Way Logo" className="w-24 h-24 md:w-32 md:h-32 object-contain invert" />
+            <img src={logoMoney} alt="Money Way Logo" className="w-24 h-24 md:w-32 md:h-32 object-contain invert dark:invert-0" />
             <h2 className="text-5xl md:text-9xl font-black tracking-tighter text-center leading-tight">
               "MONEY<br />WAY"
             </h2>
