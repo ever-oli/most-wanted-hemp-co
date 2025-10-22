@@ -25,11 +25,11 @@ const Index = () => {
     <main className="min-h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-foreground">
-        <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="text-xs font-bold tracking-widest">MOST WANTED</div>
-          <div className="flex gap-8 text-xs">
-            <a href="#shop" className="hover:text-green transition-colors">SHOP</a>
-            <a href="#about" className="hover:text-blue transition-colors">ABOUT</a>
+        <nav className="container mx-auto px-6 py-6 flex justify-between items-center">
+          <div className="text-lg md:text-xl font-black tracking-tighter">MW</div>
+          <div className="flex gap-6 md:gap-12 text-xs font-bold tracking-widest">
+            <a href="#shop" className="hover:opacity-50 transition-opacity">SHOP</a>
+            <a href="#about" className="hover:opacity-50 transition-opacity">ABOUT</a>
           </div>
         </nav>
       </header>
