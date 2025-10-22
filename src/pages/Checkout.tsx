@@ -79,11 +79,11 @@ const Checkout = () => {
         </nav>
       </header>
 
-      <div className="container mx-auto px-6 py-12">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div className="container mx-auto px-4 md:px-6 py-8 md:py-12">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
           {/* Checkout Form */}
-          <div className="lg:col-span-2 space-y-8">
-            <h1 className="text-4xl font-black tracking-tighter">CHECKOUT</h1>
+          <div className="lg:col-span-2 space-y-6 md:space-y-8">
+            <h1 className="text-3xl md:text-4xl font-black tracking-tighter">CHECKOUT</h1>
 
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -268,7 +268,7 @@ const Checkout = () => {
 
                 <Button
                   type="submit"
-                  className="w-full border-2 border-foreground bg-foreground text-background hover:bg-background hover:text-foreground transition-colors font-bold tracking-wider py-6 text-lg"
+                  className="w-full border-2 border-foreground bg-foreground text-background hover:bg-background hover:text-foreground transition-colors font-bold tracking-wider py-6 md:py-7 text-base md:text-lg min-h-[56px] sticky bottom-0 md:static"
                 >
                   PLACE ORDER
                 </Button>
@@ -277,9 +277,9 @@ const Checkout = () => {
           </div>
 
           {/* Order Summary */}
-          <div className="lg:col-span-1">
-            <div className="border border-foreground p-6 space-y-6 sticky top-24">
-              <h2 className="text-xl font-bold tracking-wider border-b border-foreground pb-2">
+          <div className="lg:col-span-1 order-first lg:order-last">
+            <div className="border border-foreground p-4 md:p-6 space-y-4 md:space-y-6 lg:sticky lg:top-24">
+              <h2 className="text-lg md:text-xl font-bold tracking-wider border-b border-foreground pb-2">
                 ORDER SUMMARY
               </h2>
 
