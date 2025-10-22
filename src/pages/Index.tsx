@@ -59,9 +59,9 @@ const Index = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center justify-center min-h-[60vh] md:min-h-[70vh] space-y-6 md:space-y-8">
             <div className="flex gap-2 md:gap-4 items-center">
-              <img src={logoStar} alt="Most Wanted Star Logo" className="w-12 h-12 md:w-24 md:h-24 object-contain rotate-45" />
-              <img src={logoMW} alt="Most Wanted MW Logo" className="w-24 h-24 md:w-40 md:h-40 object-contain" />
-              <img src={logoStar} alt="Most Wanted Star Logo" className="w-12 h-12 md:w-24 md:h-24 object-contain rotate-45" />
+              <img src={logoStar} alt="Most Wanted Star Logo" className="w-12 h-12 md:w-24 md:h-24 object-contain rotate-45 dark:invert" />
+              <img src={logoMW} alt="Most Wanted MW Logo" className="w-24 h-24 md:w-40 md:h-40 object-contain dark:invert" />
+              <img src={logoStar} alt="Most Wanted Star Logo" className="w-12 h-12 md:w-24 md:h-24 object-contain rotate-45 dark:invert" />
             </div>
             <h1 className="text-4xl md:text-8xl font-black tracking-tighter text-center px-4">"MOST WANTED"</h1>
             <img src={rioGrandeFlag} alt="Republic of Rio Grande Flag" className="w-40 h-24 md:w-64 md:h-40 object-cover object-left border border-foreground" />
