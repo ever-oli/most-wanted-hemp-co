@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "@/contexts/CartContext";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -75,7 +76,10 @@ const Checkout = () => {
           >
             MW
           </button>
-          <div className="text-xs font-bold tracking-widest">CHECKOUT</div>
+          <div className="flex items-center gap-3">
+            <div className="text-xs font-bold tracking-widest">CHECKOUT</div>
+            <ThemeToggle />
+          </div>
         </nav>
       </header>
 

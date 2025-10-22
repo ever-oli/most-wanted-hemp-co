@@ -6,6 +6,7 @@ import rioGrandeFlag from "@/assets/rio-grande-flag.png";
 import ProductCard from "@/components/ProductCard";
 import { CartDrawer } from "@/components/CartDrawer";
 import { useCart } from "@/contexts/CartContext";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShoppingCart } from "lucide-react";
 import { useState } from "react";
 const Index = () => {
@@ -32,18 +33,21 @@ const Index = () => {
               <a href="#shop" className="hover:opacity-50 transition-opacity min-h-[44px] flex items-center">SHOP</a>
               <a href="#about" className="hover:opacity-50 transition-opacity min-h-[44px] flex items-center">ABOUT</a>
             </div>
-            <button
-              onClick={() => setCartOpen(true)}
-              className="relative hover:opacity-50 transition-opacity min-w-[44px] min-h-[44px] flex items-center justify-center"
-              aria-label="Open cart"
-            >
-              <ShoppingCart className="w-6 h-6 md:w-5 md:h-5" />
-              {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-foreground text-background text-xs font-bold rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center">
-                  {itemCount}
-                </span>
-              )}
-            </button>
+            <div className="flex items-center gap-3">
+              <ThemeToggle />
+              <button
+                onClick={() => setCartOpen(true)}
+                className="relative hover:opacity-50 transition-opacity min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label="Open cart"
+              >
+                <ShoppingCart className="w-6 h-6 md:w-5 md:h-5" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-foreground text-background text-xs font-bold rounded-full min-w-[20px] h-5 px-1 flex items-center justify-center">
+                    {itemCount}
+                  </span>
+                )}
+              </button>
+            </div>
           </div>
         </nav>
       </header>
