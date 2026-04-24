@@ -1,21 +1,21 @@
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { useCart } from "@/contexts/CartContext";
+import { useQuote } from "@/contexts/QuoteContext";
 import { Minus, Plus, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-interface CartDrawerProps {
+interface QuoteDrawerProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
 
-export const CartDrawer = ({ open, onOpenChange }: CartDrawerProps) => {
-  const { items, removeFromCart, updateQuantity, subtotal } = useCart();
+export const QuoteDrawer = ({ open, onOpenChange }: QuoteDrawerProps) => {
+  const { items, removeFromQuote, updateQuantity } = useQuote();
   const navigate = useNavigate();
 
-  const handleCheckout = () => {
+  const handleRequestQuote = () => {
     onOpenChange(false);
-    navigate("/checkout");
+    navigate("/request-quote");
   };
 
   return (
@@ -23,13 +23,13 @@ export const CartDrawer = ({ open, onOpenChange }: CartDrawerProps) => {
       <SheetContent side="right" className="w-full sm:max-w-lg p-0">
         <div className="p-4 md:p-6 h-full flex flex-col">
           <SheetHeader className="mb-6">
-            <SheetTitle className="text-2xl md:text-3xl font-black tracking-tighter">CART</SheetTitle>
+            <SheetTitle className="text-2xl md:text-3xl font-black tracking-tighter">QUOTE LIST</SheetTitle>
           </SheetHeader>
 
           <div className="flex-1 flex flex-col min-h-0">
             {items.length === 0 ? (
               <div className="flex-1 flex items-center justify-center">
-                <p className="text-sm tracking-wider text-muted-foreground">YOUR CART IS EMPTY</p>
+                <p className="text-sm tracking-wider text-muted-foreground">YOUR QUOTE LIST IS EMPTY</p>
               </div>
             ) : (
               <>
@@ -40,12 +40,11 @@ export const CartDrawer = ({ open, onOpenChange }: CartDrawerProps) => {
                         <div className="flex-1 min-w-0">
                           <h3 className="font-bold text-sm tracking-wider">{item.name}</h3>
                           <p className="text-xs tracking-wider text-muted-foreground mt-1">
-                            {item.strain}
+                            {item.vendor} — {item.variantTitle}
                           </p>
-                          <p className="text-sm mt-1">${item.price}</p>
                         </div>
                         <button
-                          onClick={() => removeFromCart(item.id)}
+                          onClick={() => removeFromQuote(item.id)}
                           className="p-2 hover:opacity-50 transition-opacity min-w-[44px] min-h-[44px] flex items-center justify-center"
                           aria-label="Remove item"
                         >
@@ -77,24 +76,23 @@ export const CartDrawer = ({ open, onOpenChange }: CartDrawerProps) => {
                 </div>
 
                 <div className="border-t border-foreground pt-4 space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm font-bold tracking-wider">SUBTOTAL</span>
-                    <span className="text-xl md:text-2xl font-black">${subtotal.toFixed(2)}</span>
-                  </div>
+                  <p className="text-xs tracking-wider text-muted-foreground text-center">
+                    NO PRICES SHOWN. SUBMIT YOUR LIST AND WE WILL CONTACT YOU WITH SOURCING DETAILS.
+                  </p>
                   
                   <div className="space-y-3">
                     <Button
-                      onClick={handleCheckout}
+                      onClick={handleRequestQuote}
                       className="w-full border-2 border-foreground bg-foreground text-background hover:bg-background hover:text-foreground transition-colors font-bold tracking-wider py-6 md:py-7 text-sm min-h-[52px]"
                     >
-                      CHECKOUT
+                      REQUEST QUOTE
                     </Button>
                     <Button
                       onClick={() => onOpenChange(false)}
                       variant="outline"
                       className="w-full border-2 border-foreground bg-background text-foreground hover:bg-foreground hover:text-background transition-colors font-bold tracking-wider py-6 md:py-7 text-sm min-h-[52px]"
                     >
-                      CONTINUE SHOPPING
+                      CONTINUE BROWSING
                     </Button>
                   </div>
                 </div>
