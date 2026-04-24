@@ -125,8 +125,8 @@ const Index = () => {
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
             <div className="text-xs tracking-widest font-bold">MOST WANTED © 2025</div>
             <div className="flex gap-6 md:gap-8 text-xs">
-              <a href="#" className="hover:text-red transition-colors min-h-[44px] flex items-center">INSTAGRAM</a>
-              <a href="#" className="hover:text-blue transition-colors min-h-[44px] flex items-center">CONTACT</a>
+              <a href="https://instagram.com/mstwntdpacks" target="_blank" rel="noopener noreferrer" className="hover:text-red transition-colors min-h-[44px] flex items-center">INSTAGRAM</a>
+              <a href="mailto:mstwntdpacks@gmail.com" className="hover:text-blue transition-colors min-h-[44px] flex items-center">CONTACT</a>
               <a href="#" className="hover:text-green transition-colors min-h-[44px] flex items-center">TERMS</a>
             </div>
           </div>
