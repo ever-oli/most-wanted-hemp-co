@@ -35,17 +35,6 @@ function inferCategory(product) {
   return "other";
 }
 
-function keepVariant(title) {
-  const t = (title || "").toLowerCase();
-  if (/\b(lb|pound|pounds)\b/.test(t)) return true;
-  const m = t.match(/([0-9.]+)\s*g?$/);
-  if (m) {
-    const n = parseFloat(m[1]);
-    if (n >= 448) return true; // ~1 lb in grams
-  }
-  return false;
-}
-
 function inferStrain(product) {
   const text = `${(product.tags || []).join(" ")} ${product.title || ""}`.toLowerCase();
   if (/\bsativa\b/.test(text)) return "sativa";
@@ -133,15 +122,12 @@ async function scrapeWithJson() {
           images.push(`/products/tsunami/${filename}`);
         }
       }
-      const variants = (p.variants || [])
-        .map((v) => ({
-          id: String(v.id),
-          title: v.title || "Default",
-          options: [v.option1, v.option2, v.option3].filter(Boolean),
-          available: v.available ?? true,
-        }))
-        .filter((v) => keepVariant(v.title));
-      if (variants.length === 0) continue;
+      const variants = [{
+        id: `tsunami-${p.id}-default`,
+        title: "Contact for sizing",
+        options: [],
+        available: true,
+      }];
       allProducts.push({
         id: `tsunami-${p.id}`,
         vendor: p.vendor || "Tsunami",
@@ -251,27 +237,12 @@ async function scrapeWithPlaywrightFallback() {
           images.push(`/products/tsunami/${filename}`);
         }
         // Variants
-        let variants = [];
-        if (metaProduct && metaProduct.variants) {
-          variants = metaProduct.variants
-            .map((v) => ({
-              id: String(v.id),
-              title: v.title || "Default",
-              options: [v.option1, v.option2, v.option3].filter(Boolean),
-              available: v.available ?? true,
-            }))
-            .filter((v) => keepVariant(v.title));
-        } else if (ld?.offers && Array.isArray(ld.offers)) {
-          variants = ld.offers
-            .map((o, idx) => ({
-              id: `fallback-${handle}-${idx}`,
-              title: o.name || "Default",
-              options: [o.name || "Default"].filter(Boolean),
-              available: o.availability === "https://schema.org/InStock",
-            }))
-            .filter((v) => keepVariant(v.title));
-        }
-        if (variants.length === 0) continue;
+        const variants = [{
+          id: `tsunami-fallback-${handle}-default`,
+          title: "Contact for sizing",
+          options: [],
+          available: true,
+        }];
         allProducts.push({
           id: `tsunami-fallback-${handle}`,
           vendor: metaProduct?.vendor || "Tsunami",
