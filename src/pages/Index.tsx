@@ -126,6 +126,7 @@ const Index = () => {
             <div className="text-xs tracking-widest font-bold">MOST WANTED © 2025</div>
             <div className="flex gap-6 md:gap-8 text-xs">
               <a href="https://instagram.com/mstwntdpacks" target="_blank" rel="noopener noreferrer" className="hover:text-red transition-colors min-h-[44px] flex items-center">INSTAGRAM</a>
+              <a href="https://www.tiktok.com/@most.wanted1120" target="_blank" rel="noopener noreferrer" className="hover:text-red transition-colors min-h-[44px] flex items-center">TIKTOK</a>
               <a href="mailto:mstwntdpacks@gmail.com" className="hover:text-blue transition-colors min-h-[44px] flex items-center">CONTACT</a>
               <a href="#" className="hover:text-green transition-colors min-h-[44px] flex items-center">TERMS</a>
             </div>
