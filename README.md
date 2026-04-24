@@ -1,73 +1,72 @@
-# Welcome to your Lovable project
+# Most Wanted Hemp Co — Concierge Sourcing Catalog
 
-## Project info
+A multi-vendor THCA hemp catalog built with Vite + React + TypeScript + Tailwind + shadcn-ui.
 
-**URL**: https://lovable.dev/projects/7b0f8962-3006-4c32-a983-7ff309a0c4b6
+This site is **not a store**. Visitors browse products from multiple farms and brands, add items to a quote list, and submit the list via email. Pricing and fulfillment are handled offline through concierge sourcing.
 
-## How can I edit this code?
+## What this site does
 
-There are several ways of editing your application.
+- Displays a browsable catalog of hemp products sourced from multiple vendors.
+- No prices are shown. No checkout exists.
+- Visitors add products to a **Quote List**.
+- Submitting the quote list opens a pre-filled `mailto:` to `mstwntdpacks@gmail.com` with their contact info and item list.
 
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/7b0f8962-3006-4c32-a983-7ff309a0c4b6) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+## Local development
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## Build
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```sh
+npm run build
+```
 
-**Use GitHub Codespaces**
+Type-check without emitting:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```sh
+npx tsc -p tsconfig.app.json --noEmit
+```
 
-## What technologies are used for this project?
+## Catalog system
 
-This project is built with:
+Products are stored as per-vendor JSON files in `src/data/products.<vendor>.json` (e.g. `products.tsunami.json`, `products.mostwanted.json`). Each file is typed as a `ProductCatalog`.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+`src/data/products.ts` imports every `products.*.json` and exposes:
 
-## How can I deploy this project?
+- `allProducts` — flat array of every product
+- `productsByVendor` — record keyed by vendor name
+- `vendors` — list of vendor names
 
-Simply open [Lovable](https://lovable.dev/projects/7b0f8962-3006-4c32-a983-7ff309a0c4b6) and click on Share -> Publish.
+Product images live in `public/products/<vendor>/` and are referenced in JSON as `/products/<vendor>/<filename>`.
 
-## Can I connect a custom domain to my Lovable project?
+## Scraping
 
-Yes, you can!
+To populate or refresh the Tsunami catalog from `https://tsunami.store`:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+```sh
+npm run scrape:tsunami
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Requirements:
+
+- Node 18+ (uses native `fetch`)
+- The script is idempotent: existing images are skipped.
+- If the Shopify JSON endpoint returns 403/Cloudflare block, the script falls back to a Playwright-based scraper. Install Playwright if you need the fallback:
+  ```sh
+  npm install -D playwright
+  npx playwright install chromium
+  ```
+
+## Quote submission
+
+The quote form at `/request-quote` collects name, email, phone, preferred contact method, and optional notes. On submit it builds a `mailto:` link and redirects the browser. This requires no backend.
+
+To swap in a form backend later (e.g. Formspree), replace the `window.location.href = mailtoHref` logic in `src/pages/RequestQuote.tsx` with an API call.
+
+## Design notes
+
+- Black borders, sharp corners (no rounding), uppercase tracked caps, Helvetica aesthetic.
+- `resolveJsonModule` is enabled in `tsconfig.app.json` so JSON imports typecheck.

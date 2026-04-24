@@ -1,0 +1,61 @@
+{
+  "vendor": "Most Wanted",
+  "sourceUrl": "https://mstwntdpacks.com",
+  "scrapedAt": "2025-04-24T00:00:00Z",
+  "products": [
+    {
+      "id": "mw-pre-roll",
+      "vendor": "Most Wanted",
+      "handle": "pre-roll",
+      "name": "PRE-ROLL",
+      "category": "pre-roll",
+      "strain": null,
+      "description": "Premium THCA hemp pre-roll.",
+      "tags": ["pre-roll", "thca"],
+      "images": [],
+      "variants": [
+        { "id": "mw-pre-roll-sativa", "title": "Sativa", "options": ["Sativa"], "available": true },
+        { "id": "mw-pre-roll-indica", "title": "Indica", "options": ["Indica"], "available": true },
+        { "id": "mw-pre-roll-hybrid", "title": "Hybrid", "options": ["Hybrid"], "available": true }
+      ],
+      "sourceUrl": "https://mstwntdpacks.com",
+      "scrapedAt": "2025-04-24T00:00:00Z"
+    },
+    {
+      "id": "mw-vape",
+      "vendor": "Most Wanted",
+      "handle": "vape",
+      "name": "VAPE",
+      "category": "vape",
+      "strain": null,
+      "description": "Premium THCA hemp vape.",
+      "tags": ["vape", "thca"],
+      "images": [],
+      "variants": [
+        { "id": "mw-vape-sativa", "title": "Sativa", "options": ["Sativa"], "available": true },
+        { "id": "mw-vape-indica", "title": "Indica", "options": ["Indica"], "available": true },
+        { "id": "mw-vape-hybrid", "title": "Hybrid", "options": ["Hybrid"], "available": true }
+      ],
+      "sourceUrl": "https://mstwntdpacks.com",
+      "scrapedAt": "2025-04-24T00:00:00Z"
+    },
+    {
+      "id": "mw-flower",
+      "vendor": "Most Wanted",
+      "handle": "flower",
+      "name": "FLOWER",
+      "category": "flower",
+      "strain": null,
+      "description": "Premium THCA hemp flower.",
+      "tags": ["flower", "thca"],
+      "images": [],
+      "variants": [
+        { "id": "mw-flower-sativa", "title": "Sativa", "options": ["Sativa"], "available": true },
+        { "id": "mw-flower-indica", "title": "Indica", "options": ["Indica"], "available": true },
+        { "id": "mw-flower-hybrid", "title": "Hybrid", "options": ["Hybrid"], "available": true }
+      ],
+      "sourceUrl": "https://mstwntdpacks.com",
+      "scrapedAt": "2025-04-24T00:00:00Z"
+    }
+  ]
+}

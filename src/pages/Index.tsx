@@ -4,26 +4,19 @@ import logoMoney from "@/assets/logo-money.png";
 import logoMW from "@/assets/logo-mw.png";
 import rioGrandeFlag from "@/assets/rio-grande-flag.png";
 import ProductCard from "@/components/ProductCard";
-import { CartDrawer } from "@/components/CartDrawer";
-import { useCart } from "@/contexts/CartContext";
+import { QuoteDrawer } from "@/components/QuoteDrawer";
+import { useQuote } from "@/contexts/QuoteContext";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { ShoppingCart } from "lucide-react";
 import { useState } from "react";
+import { productsByVendor, vendors } from "@/data/products";
+
 const Index = () => {
-  const { itemCount } = useCart();
-  const [cartOpen, setCartOpen] = useState(false);
-  
-  const products = [{
-    name: "PRE-ROLL",
-    price: "15.00"
-  }, {
-    name: "VAPE",
-    price: "45.00"
-  }, {
-    name: "FLOWER",
-    price: "50.00"
-  }];
-  return <main className="min-h-screen bg-background">
+  const { itemCount } = useQuote();
+  const [quoteOpen, setQuoteOpen] = useState(false);
+
+  return (
+    <main className="min-h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-foreground">
         <nav className="container mx-auto px-4 md:px-6 py-4 md:py-6 flex justify-between items-center">
@@ -36,9 +29,9 @@ const Index = () => {
             <div className="flex items-center gap-3">
               <ThemeToggle />
               <button
-                onClick={() => setCartOpen(true)}
+                onClick={() => setQuoteOpen(true)}
                 className="relative hover:opacity-50 transition-opacity min-w-[44px] min-h-[44px] flex items-center justify-center"
-                aria-label="Open cart"
+                aria-label="Open quote list"
               >
                 <ShoppingCart className="w-6 h-6 md:w-5 md:h-5" />
                 {itemCount > 0 && (
@@ -52,7 +45,7 @@ const Index = () => {
         </nav>
       </header>
 
-      <CartDrawer open={cartOpen} onOpenChange={setCartOpen} />
+      <QuoteDrawer open={quoteOpen} onOpenChange={setQuoteOpen} />
 
       {/* Hero */}
       <section className="pt-20 md:pt-24 pb-12 md:pb-16 container mx-auto px-4 md:px-6">
@@ -66,7 +59,7 @@ const Index = () => {
             <h1 className="text-4xl md:text-8xl font-black tracking-tighter text-center px-4">"MOST WANTED"</h1>
             <img src={rioGrandeFlag} alt="Republic of Rio Grande Flag" className="w-40 h-24 md:w-64 md:h-40 object-cover object-left border border-foreground" />
             <div className="w-full h-px bg-red max-w-xs mx-auto" />
-            <p className="text-xs md:text-sm tracking-[0.5em] text-center px-2">PREMIUM THCA HEMP</p>
+            <p className="text-xs md:text-sm tracking-[0.5em] text-center px-2">CONCIERGE HEMP SOURCING</p>
             <p className="text-xs tracking-[0.3em] text-center text-muted-foreground">SOUTH TEXAS</p>
           </div>
         </div>
@@ -77,13 +70,27 @@ const Index = () => {
 
       {/* Products */}
       <section id="shop" className="py-16 md:py-24 container mx-auto px-4 md:px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-6xl font-black mb-12 md:mb-16 tracking-tighter">
+        <div className="max-w-6xl mx-auto space-y-16 md:space-y-24">
+          <h2 className="text-3xl md:text-6xl font-black tracking-tighter">
             "SHOP"
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
-            {products.map(product => <ProductCard key={product.name} {...product} />)}
-          </div>
+          {vendors.map((vendor) => {
+            const products = productsByVendor[vendor] ?? [];
+            if (products.length === 0) return null;
+            return (
+              <div key={vendor} className="space-y-6 md:space-y-8">
+                <div className="flex items-end justify-between border-b border-foreground pb-3">
+                  <h3 className="text-xl md:text-2xl font-black tracking-tighter uppercase">{vendor}</h3>
+                  <span className="text-xs tracking-widest font-bold text-muted-foreground">{products.length} PRODUCT{products.length === 1 ? "" : "S"}</span>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-12">
+                  {products.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
@@ -108,12 +115,10 @@ const Index = () => {
           <h2 className="text-3xl md:text-4xl font-black tracking-tighter">"ABOUT"</h2>
           <div className="space-y-4 text-sm leading-relaxed">
             <p>
-              MOST WANTED IS A SOUTH TEXAS THCA HEMP BRAND BUILT ON QUALITY, 
-              CULTURE, AND THE MONEY WAY MENTALITY.
+              MOST WANTED IS A CONCIERGE SOURCING PLATFORM FOR PREMIUM THCA HEMP. WE DO NOT SELL DIRECTLY — WE CONNECT YOU TO TOP FARMERS AND BRANDS ACROSS THE INDUSTRY.
             </p>
             <p>
-              WE SOURCE PREMIUM HEMP AND CREATE PRODUCTS THAT REPRESENT 
-              OUR ROOTS AND OUR FUTURE.
+              BROWSE THE CATALOG, ADD ITEMS TO YOUR QUOTE LIST, AND SUBMIT. WE WILL REACH OUT WITH SOURCING DETAILS, PRICING, AND NEXT STEPS.
             </p>
           </div>
         </div>
@@ -133,6 +138,8 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </main>;
+    </main>
+  );
 };
+
 export default Index;
