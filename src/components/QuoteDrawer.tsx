@@ -40,7 +40,7 @@ export const QuoteDrawer = ({ open, onOpenChange }: QuoteDrawerProps) => {
                         <div className="flex-1 min-w-0">
                           <h3 className="font-bold text-sm tracking-wider">{item.name}</h3>
                           <p className="text-xs tracking-wider text-muted-foreground mt-1">
-                            {item.vendor} — {item.variantTitle}
+                            {item.vendor} — {item.quantity} lb
                           </p>
                         </div>
                         <button

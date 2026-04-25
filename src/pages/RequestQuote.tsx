@@ -39,7 +39,7 @@ const RequestQuote = () => {
 
   const onSubmit = (data: QuoteFormData) => {
     const itemLines = items.map(
-      (item) => `[${item.vendor}] ${item.name} (${item.variantTitle}) × ${item.quantity}`
+      (item) => `[${item.vendor}] ${item.name} — ${item.quantity} lb`
     );
     const body = [
       `Name: ${data.name}`,
@@ -206,7 +206,7 @@ const RequestQuote = () => {
                         <FormLabel className="text-xs tracking-wider font-bold">NOTES (OPTIONAL)</FormLabel>
                         <FormControl>
                           <Textarea
-                            placeholder="Any questions or special requests..."
+                            placeholder="Each item on your list represents 1 lb. Use this space for any special requests, strain preferences, or questions..."
                             className="border-2 border-foreground rounded-none"
                             {...field}
                           />
@@ -240,7 +240,7 @@ const RequestQuote = () => {
                     <div className="flex-1">
                       <p className="font-bold tracking-wider">{item.name}</p>
                       <p className="text-xs tracking-wider text-muted-foreground">
-                        {item.vendor} — {item.variantTitle} × {item.quantity}
+                        {item.vendor} — {item.quantity} lb
                       </p>
                     </div>
                   </div>

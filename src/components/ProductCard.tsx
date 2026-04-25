@@ -14,7 +14,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       productId: product.id,
       vendor: product.vendor,
       name: product.name,
-      variantTitle: "Ask for pricing",
+      variantTitle: "1 lb",
     });
   };
 

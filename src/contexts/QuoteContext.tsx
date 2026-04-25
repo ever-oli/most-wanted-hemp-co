@@ -41,7 +41,7 @@ export const QuoteProvider = ({ children }: { children: React.ReactNode }) => {
       }
       return [...prev, { ...newItem, quantity: 1 }];
     });
-    toast.success("Added to quote list");
+    toast.success("Added to quote list — 1 lb");
   };
 
   const removeFromQuote = (id: string) => {
