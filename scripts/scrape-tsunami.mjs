@@ -122,12 +122,12 @@ async function scrapeWithJson() {
           images.push(`/products/tsunami/${filename}`);
         }
       }
-      const variants = (p.variants || []).map((v) => ({
-        id: String(v.id),
-        title: v.title || "Default",
-        options: [v.option1, v.option2, v.option3].filter(Boolean),
-        available: v.available ?? true,
-      }));
+      const variants = [{
+        id: `tsunami-${p.id}-default`,
+        title: "Contact for sizing",
+        options: [],
+        available: true,
+      }];
       allProducts.push({
         id: `tsunami-${p.id}`,
         vendor: p.vendor || "Tsunami",
@@ -237,24 +237,12 @@ async function scrapeWithPlaywrightFallback() {
           images.push(`/products/tsunami/${filename}`);
         }
         // Variants
-        let variants = [];
-        if (metaProduct && metaProduct.variants) {
-          variants = metaProduct.variants.map((v) => ({
-            id: String(v.id),
-            title: v.title || "Default",
-            options: [v.option1, v.option2, v.option3].filter(Boolean),
-            available: v.available ?? true,
-          }));
-        } else if (ld?.offers && Array.isArray(ld.offers)) {
-          variants = ld.offers.map((o, idx) => ({
-            id: `fallback-${handle}-${idx}`,
-            title: o.name || "Default",
-            options: [o.name || "Default"].filter(Boolean),
-            available: o.availability === "https://schema.org/InStock",
-          }));
-        } else {
-          variants = [{ id: `fallback-${handle}-0`, title: "Default", options: [], available: true }];
-        }
+        const variants = [{
+          id: `tsunami-fallback-${handle}-default`,
+          title: "Contact for sizing",
+          options: [],
+          available: true,
+        }];
         allProducts.push({
           id: `tsunami-fallback-${handle}`,
           vendor: metaProduct?.vendor || "Tsunami",

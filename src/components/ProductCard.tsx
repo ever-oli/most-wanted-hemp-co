@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuote } from "@/contexts/QuoteContext";
 import { Product } from "@/data/schema";
 
@@ -7,21 +6,15 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const [selectedVariantId, setSelectedVariantId] = React.useState<string>(
-    product.variants[0]?.id ?? ""
-  );
   const { addToQuote } = useQuote();
 
-  const selectedVariant = product.variants.find((v) => v.id === selectedVariantId) ?? product.variants[0];
-
   const handleAddToQuote = () => {
-    if (!selectedVariant) return;
     addToQuote({
-      id: `${product.id}:${selectedVariant.id}`,
+      id: product.id,
       productId: product.id,
       vendor: product.vendor,
       name: product.name,
-      variantTitle: selectedVariant.title,
+      variantTitle: "Ask for pricing",
     });
   };
 
@@ -55,35 +48,15 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
         <p className="text-sm leading-relaxed line-clamp-3">{product.description}</p>
 
-        {product.variants.length > 1 && (
-          <div className="flex flex-col gap-2 pt-1">
-            {product.variants.map((variant) => (
-              <button
-                key={variant.id}
-                onClick={() => setSelectedVariantId(variant.id)}
-                disabled={!variant.available}
-                className={`text-xs uppercase tracking-wider py-2 border transition-colors min-h-[44px] ${
-                  selectedVariantId === variant.id
-                    ? "bg-foreground text-background border-foreground group-hover:bg-background group-hover:text-foreground group-hover:border-background"
-                    : "border-foreground hover:bg-foreground hover:text-background group-hover:border-background group-hover:bg-background group-hover:text-foreground"
-                } ${!variant.available ? "opacity-40 cursor-not-allowed" : ""}`}
-              >
-                {variant.title}
-              </button>
-            ))}
-          </div>
-        )}
-
         <div className="pt-2 mt-auto space-y-2">
           <button
             onClick={handleAddToQuote}
-            disabled={!selectedVariant?.available}
-            className="w-full text-xs uppercase tracking-wider py-4 md:py-3 border border-foreground bg-foreground text-background hover:bg-background hover:text-foreground transition-colors font-bold min-h-[52px] disabled:opacity-40 disabled:cursor-not-allowed group-hover:bg-background group-hover:text-foreground group-hover:border-background"
+            className="w-full text-xs uppercase tracking-wider py-4 md:py-3 border border-foreground bg-foreground text-background hover:bg-background hover:text-foreground transition-colors font-bold min-h-[52px] group-hover:bg-background group-hover:text-foreground group-hover:border-background"
           >
             ADD TO QUOTE
           </button>
           <p className="text-[10px] tracking-[0.2em] text-center uppercase text-muted-foreground group-hover:text-background/70">
-            CONTACT FOR PRICING
+            ASK FOR PRICING
           </p>
         </div>
       </div>
